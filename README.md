@@ -3,7 +3,7 @@ Pass-scene
 
 Generating memorable passwords is a hard problem. Perhaps the best available current option is [diceware](diceware.com), which generates fairly short, fairly memorable passphrases. But, if you don't care about length, could you generate more memorable phrases for use by everyday people?
 
-Pass-scenes are an attempt to create a more meaningful passphrase generator by using templates for different parts of speech and kinds of words, derived from [Princeton's WordNet database](https://wordnet.princeton.edu/). You can view a [demo](http://demos.samgentle.com/pass-scene) here, or install it as an npm module and try it out for yourself.
+Pass-scenes are an attempt to create a more meaningful passphrase generator by using templates for different parts of speech and kinds of words, derived from [Princeton's WordNet database](https://wordnet.princeton.edu/). You can view a [demo](https://demos.samgentle.com/pass-scene) here, or install it as an npm module and try it out for yourself.
 
 There's some significant future work to do here, mainly:
 
