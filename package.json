@@ -1,0 +1,25 @@
+{
+  "name": "pass-scene",
+  "version": "1.0.0",
+  "description": "Memorable passphrase generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Passphrase",
+    "random",
+    "word",
+    "generate"
+  ],
+  "author": "Sam Gentle <sam@samgentle.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^12.0.1",
+    "coffeeify": "^2.0.1",
+    "watchify": "^3.6.1"
+  },
+  "dependencies": {
+    "coffee-script": "^1.10.0"
+  }
+}

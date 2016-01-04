@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pass-scene</title>
+    <style>
+      body, input, button, select {
+        font-size: 24px;
+      }
+      pre {
+        font-size: 16px;
+      }
+      input, select {
+        width: 95%;
+      }
+    </style>
+  </head>
+  <body>
+    <select id="templates">
+    <option>two {noun}s can't {verb} a {noun} unless one is {adj}</option>
+    <option>the {noun} is more {adj} than the {noun}, but not as {adj}</option>
+    <option>{noun.person}s who {verb} in {adj} {noun.location} shouldn't {verb} {noun.object}s</option>
+    <option>{noun.person} eating {noun.food} off {noun.person} while {noun.person} watches</option>
+    <option>the {noun.person} got sick of {noun.act} and joined the {noun.group} to {verb.change} the {noun}</option>
+    </select><br />
+    <input id="template"><br/>
+    <button id="generate">Generate</button>
+    Entropy: <span id="entropy">0</span> bit(s) (≈ <span id="entropy-alnum"></span> alphanumeric, <span id="entropy-diceware"></span> diceware)
+    <br>
+    <input id="pass">
+
+    <pre id="tags"></pre>
+
+    <script src="client.js"></script>
+    <script>
+      var $ = document.querySelector.bind(document)
+      function updateEntropy() {
+        var bits = passScene.entropy($('#template').value)
+        $('#entropy').textContent = bits.toFixed(1)
+        $('#entropy-alnum').textContent = (bits/5.954).toFixed(1)
+        $('#entropy-diceware').textContent = (bits/12.925).toFixed(1)
+      }
+      function generatePass() {
+        $('#pass').value = passScene($('#template').value)
+      }
+      function setTemplate() {
+        $('#template').value = $('#templates').value
+        updateEntropy()
+      }
+      $('#templates').addEventListener('change', setTemplate)
+      $('#template').addEventListener('input', updateEntropy)
+      $('#generate').addEventListener('click', generatePass)
+      $('#template').addEventListener('keydown', function(ev) {
+        if (ev.keyCode == 13) generatePass()
+      })
+      $('#tags').textContent = passScene.kinds.map(function(k){
+        return '{'+k+'} - ' + Math.round(Math.pow(2,passScene.entropy('{'+k+'}')))
+      }).join('\n')
+      setTemplate()
+    </script>
+  </body>
+</html>
